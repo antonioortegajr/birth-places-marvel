@@ -14,7 +14,7 @@
             "properties": {
                 "name": "Angel",
                 "description": "<img src=\"http://images2.wikia.nocookie.net/marveldatabase/images/a/a6/Archangel_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Centerport, USA.<br>Warren Kenneth Worthington III",
-                "gx_media_links": "http://images2.wikia.nocookie.net/marveldatabase/images/a/a6/Archangel_001.jpg"
+                "image": "http://images2.wikia.nocookie.net/marveldatabase/images/a/a6/Archangel_001.jpg"
             }
         },
         {
@@ -28,9 +28,10 @@
                 ]
             },
             "properties": {
+                "marker-symbol": "marker-stroked",
                 "name": "Apocalypse",
                 "description": "<img src=\"http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Akkaba, Eygpt.En Sabah Nur",
-                "gx_media_links": "http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg"
+                "image": "http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg"
             }
         },
         {
@@ -46,7 +47,7 @@
             "properties": {
                 "name": "Aunt May",
                 "description": "<img src=\"http://images3.wikia.nocookie.net/marveldatabase/images/c/c8/May_Parker_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.<br><br><br>May Reilly Parker",
-                "gx_media_links": "http://images3.wikia.nocookie.net/marveldatabase/images/c/c8/May_Parker_001.jpg"
+                "image": "http://images3.wikia.nocookie.net/marveldatabase/images/c/c8/May_Parker_001.jpg"
             }
         },
         {
@@ -62,7 +63,7 @@
             "properties": {
                 "name": "Ben Parker",
                 "description": "<img src=\"http://www.comicsfan.it/wordpress/wp-content/uploads/2008/10/ben_parker.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Benjamin Parker",
-                "gx_media_links": "http://www.comicsfan.it/wordpress/wp-content/uploads/2008/10/ben_parker.jpg"
+                "image": "http://www.comicsfan.it/wordpress/wp-content/uploads/2008/10/ben_parker.jpg"
             }
         },
         {
@@ -78,7 +79,7 @@
             "properties": {
                 "name": "Betty Brant",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/6/64/BettyBrant-Headshot.jpg/440px-BettyBrant-Headshot.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Philadelphia, USA.<br>Betty Brant",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/6/64/BettyBrant-Headshot.jpg/440px-BettyBrant-Headshot.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/6/64/BettyBrant-Headshot.jpg/440px-BettyBrant-Headshot.jpg"
             }
         },
         {
@@ -94,7 +95,7 @@
             "properties": {
                 "name": "Black Cat",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/d/d6/Black_cat_small.jpg/440px-Black_cat_small.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.Felicia Hardy",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/d/d6/Black_cat_small.jpg/440px-Black_cat_small.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/d/d6/Black_cat_small.jpg/440px-Black_cat_small.jpg"
             }
         },
         {
@@ -110,7 +111,7 @@
             "properties": {
                 "name": "Boomerang",
                 "description": "<img src=\"http://www.marveldirectory.com/pictures/individuals/b_1d/boomerang.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Alice Springs, Australia.<br><br>Fred Myers",
-                "gx_media_links": "http://www.marveldirectory.com/pictures/individuals/b_1d/boomerang.gif"
+                "image": "http://www.marveldirectory.com/pictures/individuals/b_1d/boomerang.gif"
             }
         },
         {
@@ -126,7 +127,7 @@
             "properties": {
                 "name": "Captain America",
                 "description": "<img src=\"http://www.comicbookmovie.com/images/news/captain-america/CaptainAmerica.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.Steven Rogers",
-                "gx_media_links": "http://www.comicbookmovie.com/images/news/captain-america/CaptainAmerica.jpg"
+                "image": "http://www.comicbookmovie.com/images/news/captain-america/CaptainAmerica.jpg"
             }
         },
         {
@@ -142,7 +143,7 @@
             "properties": {
                 "name": "Carnage",
                 "description": "<img src=\"http://www.stationanywhere.com/ajm/thewebofspidey/images/Carnage%202.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Cletus Kasady",
-                "gx_media_links": "http://www.stationanywhere.com/ajm/thewebofspidey/images/Carnage%202.jpg"
+                "image": "http://www.stationanywhere.com/ajm/thewebofspidey/images/Carnage%202.jpg"
             }
         },
         {
@@ -158,7 +159,7 @@
             "properties": {
                 "name": "Cyclops",
                 "description": "<img src=\"http://www.geocities.com/Area51/Hollow/9106/Cyclops1.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Anchorage, USA.Scott Summers",
-                "gx_media_links": "http://www.geocities.com/Area51/Hollow/9106/Cyclops1.jpg"
+                "image": "http://www.geocities.com/Area51/Hollow/9106/Cyclops1.jpg"
             }
         },
         {
@@ -174,7 +175,7 @@
             "properties": {
                 "name": "Daredevil",
                 "description": "<img src=\"http://www.freewebs.com/luke-hereford/daredevil.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Matthew Michael Murdock",
-                "gx_media_links": "http://www.freewebs.com/luke-hereford/daredevil.jpg"
+                "image": "http://www.freewebs.com/luke-hereford/daredevil.jpg"
             }
         },
         {
@@ -190,7 +191,7 @@
             "properties": {
                 "name": "Doctor Octopus",
                 "description": "<img src=\"http://fc04.deviantart.com/fs42/f/2009/068/3/9/Spidey_vs_Doc_Ock___BDog_color_by_spiderguile.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Schenectady, USA.<br>Otto Gunther Octavius",
-                "gx_media_links": "http://fc04.deviantart.com/fs42/f/2009/068/3/9/Spidey_vs_Doc_Ock___BDog_color_by_spiderguile.jpg"
+                "image": "http://fc04.deviantart.com/fs42/f/2009/068/3/9/Spidey_vs_Doc_Ock___BDog_color_by_spiderguile.jpg"
             }
         },
         {
@@ -206,7 +207,7 @@
             "properties": {
                 "name": "Doctor Strange",
                 "description": "<img src=\"http://www.geocities.com/patchlord/imagem/dr_strange.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Philadelphia, USA.Stephen Vincent Strange",
-                "gx_media_links": "http://www.geocities.com/patchlord/imagem/dr_strange.jpg"
+                "image": "http://www.geocities.com/patchlord/imagem/dr_strange.jpg"
             }
         },
         {
@@ -222,7 +223,7 @@
             "properties": {
                 "name": "Electro",
                 "description": "<img src=\"http://dave16.files.wordpress.com/2008/08/200px-electro11.jpg\" height=\"200\" width=\"auto\" /><br><br>Place or birth: Endicott, USA.<br>Maxwell Dillon",
-                "gx_media_links": "http://dave16.files.wordpress.com/2008/08/200px-electro11.jpg"
+                "image": "http://dave16.files.wordpress.com/2008/08/200px-electro11.jpg"
             }
         },
         {
@@ -238,7 +239,7 @@
             "properties": {
                 "name": "Flash Thompson",
                 "description": "<img src=\"http://media.comicvine.com/uploads/0/40/75798-128465-flash-thompson_large.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Forrest Hills, USA.<br>Eugene Thompson",
-                "gx_media_links": "http://media.comicvine.com/uploads/0/40/75798-128465-flash-thompson_large.jpg"
+                "image": "http://media.comicvine.com/uploads/0/40/75798-128465-flash-thompson_large.jpg"
             }
         },
         {
@@ -254,7 +255,7 @@
             "properties": {
                 "name": "Gambit",
                 "description": "<img src=\"http://www.gearcritech.com/images/update031705_gambit.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New Orleans, USARemy Etienne LeBeau",
-                "gx_media_links": "http://www.gearcritech.com/images/update031705_gambit.jpg"
+                "image": "http://www.gearcritech.com/images/update031705_gambit.jpg"
             }
         },
         {
@@ -270,7 +271,7 @@
             "properties": {
                 "name": "Green Goblin",
                 "description": "<img src=\"http://i102.photobucket.com/albums/m119/gambit212_2006/Green_Goblin002.jpg?t=1241193451\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Hartford, USA.Norman Osborn",
-                "gx_media_links": "http://i102.photobucket.com/albums/m119/gambit212_2006/Green_Goblin002.jpg?t=1241193451"
+                "image": "http://i102.photobucket.com/albums/m119/gambit212_2006/Green_Goblin002.jpg?t=1241193451"
             }
         },
         {
@@ -286,7 +287,7 @@
             "properties": {
                 "name": "Grey Goblin",
                 "description": "<img src=\"http://media.comicvine.com/uploads/0/378/120188-85716-grey-goblin_large.jpeg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Paris, France.Gabriel Stacy",
-                "gx_media_links": "http://media.comicvine.com/uploads/0/378/120188-85716-grey-goblin_large.jpeg"
+                "image": "http://media.comicvine.com/uploads/0/378/120188-85716-grey-goblin_large.jpeg"
             }
         },
         {
@@ -302,7 +303,7 @@
             "properties": {
                 "name": "Ghost Rider",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/8/8a/GhostRiderDanny442.jpg/440px-GhostRiderDanny442.jpg\" height=\"200\" width=\"auto\" /><br><br>Pace of birth: Waukegan, USA.<br>Johnny Blaze",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/8/8a/GhostRiderDanny442.jpg/440px-GhostRiderDanny442.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/8/8a/GhostRiderDanny442.jpg/440px-GhostRiderDanny442.jpg"
             }
         },
         {
@@ -318,7 +319,7 @@
             "properties": {
                 "name": "Harry Osborn",
                 "description": "<img src=\"http://www.samruby.com/Spiderverse/HarryOsborn/HarryOsborn.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br><br>Harold Osborn",
-                "gx_media_links": "http://www.samruby.com/Spiderverse/HarryOsborn/HarryOsborn.gif"
+                "image": "http://www.samruby.com/Spiderverse/HarryOsborn/HarryOsborn.gif"
             }
         },
         {
@@ -334,7 +335,7 @@
             "properties": {
                 "name": "Havok",
                 "description": "<img src=\"http://images1.wikia.nocookie.net/marveldatabase/images/thumb/7/74/Havok_(Alex_Summers)_018.jpg/200px-Havok_(Alex_Summers)_018.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Honolulu, USA.Alexander Summers",
-                "gx_media_links": "http://images1.wikia.nocookie.net/marveldatabase/images/thumb/7/74/Havok_(Alex_Summers)_018.jpg/200px-Havok_(Alex_Summers)_018.jpg"
+                "image": "http://images1.wikia.nocookie.net/marveldatabase/images/thumb/7/74/Havok_(Alex_Summers)_018.jpg/200px-Havok_(Alex_Summers)_018.jpg"
             }
         },
         {
@@ -350,7 +351,7 @@
             "properties": {
                 "name": "Hobgoblin (Ned Leeds)",
                 "description": "<img src=\"http://www.samruby.com/Villains/HobgoblinI/HobgoblinHL3.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Ned Leeds",
-                "gx_media_links": "http://www.samruby.com/Villains/HobgoblinI/HobgoblinHL3.gif"
+                "image": "http://www.samruby.com/Villains/HobgoblinI/HobgoblinHL3.gif"
             }
         },
         {
@@ -366,7 +367,7 @@
             "properties": {
                 "name": "Human Torch",
                 "description": "<img src=\"http://wiw.org/~jess/wp-uploads/human_torch.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Glenville, USA.Jonathan Lowell Spencer Storm",
-                "gx_media_links": "http://wiw.org/~jess/wp-uploads/human_torch.jpg"
+                "image": "http://wiw.org/~jess/wp-uploads/human_torch.jpg"
             }
         },
         {
@@ -382,7 +383,7 @@
             "properties": {
                 "name": "Hulk",
                 "description": "<img src=\"http://www.gistudios.com/images/Artists/Atkins/Marvel_Hulk.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Dayton, USA.Robert Bruce Banner",
-                "gx_media_links": "http://www.gistudios.com/images/Artists/Atkins/Marvel_Hulk.jpg"
+                "image": "http://www.gistudios.com/images/Artists/Atkins/Marvel_Hulk.jpg"
             }
         },
         {
@@ -398,7 +399,7 @@
             "properties": {
                 "name": "Hydro-Man",
                 "description": "<img src=\"http://media.comicvine.com/uploads/0/77/118241-145233-hydro-man_thumb.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bronx, USA.<br>Morris Bench",
-                "gx_media_links": "http://media.comicvine.com/uploads/0/77/118241-145233-hydro-man_thumb.jpg"
+                "image": "http://media.comicvine.com/uploads/0/77/118241-145233-hydro-man_thumb.jpg"
             }
         },
         {
@@ -414,7 +415,7 @@
             "properties": {
                 "name": "Iceman",
                 "description": "<img src=\"http://i14.photobucket.com/albums/a339/BEN614/Iceman442px.jpg?t=1241194956\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Port Washington, USA.Robert Louis Drake",
-                "gx_media_links": "http://i14.photobucket.com/albums/a339/BEN614/Iceman442px.jpg?t=1241194956"
+                "image": "http://i14.photobucket.com/albums/a339/BEN614/Iceman442px.jpg?t=1241194956"
             }
         },
         {
@@ -430,7 +431,7 @@
             "properties": {
                 "name": "Invisible Woman",
                 "description": "<img src=\"http://www.superherodb.com/pictures/portraits/invisible-woman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Glenville, USA..Susan Storm Richards",
-                "gx_media_links": "http://www.superherodb.com/pictures/portraits/invisible-woman.jpg"
+                "image": "http://www.superherodb.com/pictures/portraits/invisible-woman.jpg"
             }
         },
         {
@@ -446,7 +447,7 @@
             "properties": {
                 "name": "Iron Man",
                 "description": "<img src=\"http://images.paraorkut.com/img/pics/images/i/iron_man-5983.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Long Island, USA.Anthony Edward  Stark",
-                "gx_media_links": "http://images.paraorkut.com/img/pics/images/i/iron_man-5983.gif"
+                "image": "http://images.paraorkut.com/img/pics/images/i/iron_man-5983.gif"
             }
         },
         {
@@ -462,7 +463,7 @@
             "properties": {
                 "name": "Jackel",
                 "description": "<img src=\"http://www.samruby.com/Villains/Jackal/JackalJacket.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Miles Warren",
-                "gx_media_links": "http://www.samruby.com/Villains/Jackal/JackalJacket.gif"
+                "image": "http://www.samruby.com/Villains/Jackal/JackalJacket.gif"
             }
         },
         {
@@ -478,7 +479,7 @@
             "properties": {
                 "name": "Jack O'Lantern",
                 "description": "<img src=\"http://www.samruby.com/Villains/JackOLantern/Jack.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Boston, USA.Jason Philip Macendale Jr.",
-                "gx_media_links": "http://www.samruby.com/Villains/JackOLantern/Jack.gif"
+                "image": "http://www.samruby.com/Villains/JackOLantern/Jack.gif"
             }
         },
         {
@@ -494,7 +495,7 @@
             "properties": {
                 "name": "J. Jonah Jameson",
                 "description": "<img src=\"http://images.wizarduniverse.com/WizardUniverse/magazinepics/characters8/5.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>John Jonah Jameson",
-                "gx_media_links": "http://images.wizarduniverse.com/WizardUniverse/magazinepics/characters8/5.jpg"
+                "image": "http://images.wizarduniverse.com/WizardUniverse/magazinepics/characters8/5.jpg"
             }
         },
         {
@@ -510,7 +511,7 @@
             "properties": {
                 "name": "Joseph \"Robbie\" Robertson",
                 "description": "<img src=\"http://www.marvunapp.com/Appendix4/earthspiderarms17.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Harlem, USA.<br>Joseph \"Robbie\" Robertson",
-                "gx_media_links": "http://www.marvunapp.com/Appendix4/earthspiderarms17.jpg"
+                "image": "http://www.marvunapp.com/Appendix4/earthspiderarms17.jpg"
             }
         },
         {
@@ -526,7 +527,7 @@
             "properties": {
                 "name": "Juggernaut",
                 "description": "<img src=\"http://brownman.com/Images/Juggernaut.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Berkeley, USA.Cain Marko",
-                "gx_media_links": "http://brownman.com/Images/Juggernaut.jpg"
+                "image": "http://brownman.com/Images/Juggernaut.jpg"
             }
         },
         {
@@ -542,7 +543,7 @@
             "properties": {
                 "name": "Kraven",
                 "description": "<img src=\"http://www.samruby.com/Villains/Kraven/Kraven.gif\" height=\"200\" width=\"auto\" /><br><br>Places of birth: Volgrad, Russia.Sergei Kravinoff",
-                "gx_media_links": "http://www.samruby.com/Villains/Kraven/Kraven.gif"
+                "image": "http://www.samruby.com/Villains/Kraven/Kraven.gif"
             }
         },
         {
@@ -558,7 +559,7 @@
             "properties": {
                 "name": "Lizard",
                 "description": "<img src=\"http://static.ulike.net/img/01_Lizard_%28Character%29.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Coral Gables, USA.Curtis Connors",
-                "gx_media_links": "http://static.ulike.net/img/01_Lizard_%28Character%29.jpg"
+                "image": "http://static.ulike.net/img/01_Lizard_%28Character%29.jpg"
             }
         },
         {
@@ -574,7 +575,7 @@
             "properties": {
                 "name": "Madame Web",
                 "description": "<img src=\"http://images3.wikia.nocookie.net/marveldatabase/images/thumb/a/ae/Madame_Web_001.jpg/200px-Madame_Web_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Salem, USA.Cassandra Webb",
-                "gx_media_links": "http://images3.wikia.nocookie.net/marveldatabase/images/thumb/a/ae/Madame_Web_001.jpg/200px-Madame_Web_001.jpg"
+                "image": "http://images3.wikia.nocookie.net/marveldatabase/images/thumb/a/ae/Madame_Web_001.jpg/200px-Madame_Web_001.jpg"
             }
         },
         {
@@ -590,7 +591,7 @@
             "properties": {
                 "name": "Mary Jane Watson-Parker",
                 "description": "<img src=\"http://360.kombo.com/images/content/news/blurb_200px-Mary_Jane_Watson_002_20081014.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Montoursville, USA.<br><br>Mary Jane Watson-Parker",
-                "gx_media_links": "http://360.kombo.com/images/content/news/blurb_200px-Mary_Jane_Watson_002_20081014.jpg"
+                "image": "http://360.kombo.com/images/content/news/blurb_200px-Mary_Jane_Watson_002_20081014.jpg"
             }
         },
         {
@@ -606,7 +607,7 @@
             "properties": {
                 "name": "Mr. Fantastic",
                 "description": "<img src=\"http://i43.photobucket.com/albums/e391/camel19/105459-mr-fantastic_400cropped.jpg?t=1241195038\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Central City, USA.Reed Richards",
-                "gx_media_links": "http://i43.photobucket.com/albums/e391/camel19/105459-mr-fantastic_400cropped.jpg?t=1241195038"
+                "image": "http://i43.photobucket.com/albums/e391/camel19/105459-mr-fantastic_400cropped.jpg?t=1241195038"
             }
         },
         {
@@ -622,7 +623,7 @@
             "properties": {
                 "name": "Mysterio",
                 "description": "<img src=\"http://www.samruby.com/Villains/Mysterio/MysterioPoint.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Riverside, USA.Quentin Beck",
-                "gx_media_links": "http://www.samruby.com/Villains/Mysterio/MysterioPoint.gif"
+                "image": "http://www.samruby.com/Villains/Mysterio/MysterioPoint.gif"
             }
         },
         {
@@ -638,7 +639,7 @@
             "properties": {
                 "name": "Nightcrawler",
                 "description": "<img src=\"http://www.megatokyo.com/rantimgs/0237.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bavaria, Germany.Kurt Wagner",
-                "gx_media_links": "http://www.megatokyo.com/rantimgs/0237.jpg"
+                "image": "http://www.megatokyo.com/rantimgs/0237.jpg"
             }
         },
         {
@@ -654,7 +655,7 @@
             "properties": {
                 "name": "Professor X",
                 "description": "<img src=\"http://www.marveldirectory.com/pictures/individuals/p_1d/professorx1.gif\" height=\"200\" width=\"auto\" /><br><br>Pace of birth: New York, USA.Charles Francis Xavier",
-                "gx_media_links": "http://www.marveldirectory.com/pictures/individuals/p_1d/professorx1.gif"
+                "image": "http://www.marveldirectory.com/pictures/individuals/p_1d/professorx1.gif"
             }
         },
         {
@@ -670,7 +671,7 @@
             "properties": {
                 "name": "Prowler",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/e/ee/Prowler333.jpg/440px-Prowler333.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bronx, USA",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/e/ee/Prowler333.jpg/440px-Prowler333.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/e/ee/Prowler333.jpg/440px-Prowler333.jpg"
             }
         },
         {
@@ -686,7 +687,7 @@
             "properties": {
                 "name": "Puma",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/9/9b/Pumaaa.jpg/440px-Pumaaa.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Hartsdale, USA.<br>Thomas Fireheart",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/9/9b/Pumaaa.jpg/440px-Pumaaa.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/9/9b/Pumaaa.jpg/440px-Pumaaa.jpg"
             }
         },
         {
@@ -702,7 +703,7 @@
             "properties": {
                 "name": "Punisher",
                 "description": "<img src=\"http://www.thepunisher.co.uk/assets/images/ThePunisher.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.Frank Castle (born Castiglione)",
-                "gx_media_links": "http://www.thepunisher.co.uk/assets/images/ThePunisher.gif"
+                "image": "http://www.thepunisher.co.uk/assets/images/ThePunisher.gif"
             }
         },
         {
@@ -718,7 +719,7 @@
             "properties": {
                 "name": "Sandman",
                 "description": "<img src=\"http://upload.wikimedia.org/wikipedia/en/thumb/7/79/Tboltssandman.jpg/250px-Tboltssandman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.<br>William Baker(Flint Marko)",
-                "gx_media_links": "http://upload.wikimedia.org/wikipedia/en/thumb/7/79/Tboltssandman.jpg/250px-Tboltssandman.jpg"
+                "image": "http://upload.wikimedia.org/wikipedia/en/thumb/7/79/Tboltssandman.jpg/250px-Tboltssandman.jpg"
             }
         },
         {
@@ -734,7 +735,7 @@
             "properties": {
                 "name": "Scorpion",
                 "description": "<img src=\"http://www.leaderslair.com/marvelvillains/Scorpion.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Yonkers, USA.Mac Gargan",
-                "gx_media_links": "http://www.leaderslair.com/marvelvillains/Scorpion.gif"
+                "image": "http://www.leaderslair.com/marvelvillains/Scorpion.gif"
             }
         },
         {
@@ -750,7 +751,7 @@
             "properties": {
                 "name": "She-Hulk",
                 "description": "<img src=\"http://www.fantomcomics.com/she-hulk-onea.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Los Angeles, USA.Jennifer Susan Walters",
-                "gx_media_links": "http://www.fantomcomics.com/she-hulk-onea.jpg"
+                "image": "http://www.fantomcomics.com/she-hulk-onea.jpg"
             }
         },
         {
@@ -766,7 +767,7 @@
             "properties": {
                 "name": "Shocker",
                 "description": "<img src=\"http://blogzarro.com/images/spiderman_villains/shocker.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Herman Schultz",
-                "gx_media_links": "http://blogzarro.com/images/spiderman_villains/shocker.jpg"
+                "image": "http://blogzarro.com/images/spiderman_villains/shocker.jpg"
             }
         },
         {
@@ -782,7 +783,7 @@
             "properties": {
                 "name": "Spider-Man",
                 "description": "<img src=\"http://leftonmission.com/blog/uploaded_images/Spidey-731888.jpg?q=leftonmission/blog/uploaded_images/Spidey-731888.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Forrest Hills, USA.<br>Peter Benjamin Parker",
-                "gx_media_links": "http://leftonmission.com/blog/uploaded_images/Spidey-731888.jpg?q=leftonmission/blog/uploaded_images/Spidey-731888.jpg"
+                "image": "http://leftonmission.com/blog/uploaded_images/Spidey-731888.jpg?q=leftonmission/blog/uploaded_images/Spidey-731888.jpg"
             }
         },
         {
@@ -798,7 +799,7 @@
             "properties": {
                 "name": "Spider-Woman",
                 "description": "<img src=\"http://www.adherents.com/lit/comics/img/s/SpiderWoman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: London, England.Jessica Drew",
-                "gx_media_links": "http://www.adherents.com/lit/comics/img/s/SpiderWoman.jpg"
+                "image": "http://www.adherents.com/lit/comics/img/s/SpiderWoman.jpg"
             }
         },
         {
@@ -814,7 +815,7 @@
             "properties": {
                 "name": "Storm",
                 "description": "<img src=\"http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Uxm449.jpg/250px-Uxm449.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Ororo Munroe",
-                "gx_media_links": "http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Uxm449.jpg/250px-Uxm449.jpg"
+                "image": "http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Uxm449.jpg/250px-Uxm449.jpg"
             }
         },
         {
@@ -830,7 +831,7 @@
             "properties": {
                 "name": "Thing",
                 "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/7/70/1602_thing.jpg/440px-1602_thing.jpg\" height=\"200\" width=\"auto\" /><br><br>Places of birth: Manhattan, USA..Benjamin Jacob Grimm",
-                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/7/70/1602_thing.jpg/440px-1602_thing.jpg"
+                "image": "http://www.marvel.com/universe3zx/images/thumb/7/70/1602_thing.jpg/440px-1602_thing.jpg"
             }
         },
         {
@@ -846,7 +847,7 @@
             "properties": {
                 "name": "Venom",
                 "description": "<img src=\"http://www.comicbookmovie.com/images/news/fantastic-four-2/venom.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: San-Francisco, USA.Edward Brock",
-                "gx_media_links": "http://www.comicbookmovie.com/images/news/fantastic-four-2/venom.jpg"
+                "image": "http://www.comicbookmovie.com/images/news/fantastic-four-2/venom.jpg"
             }
         },
         {
@@ -862,7 +863,7 @@
             "properties": {
                 "name": "Vulture ",
                 "description": "<img src=\"http://blogzarro.com/images/spiderman_villains/vulture.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Staten Island, USA.Adrian Toomes",
-                "gx_media_links": "http://blogzarro.com/images/spiderman_villains/vulture.jpg"
+                "image": "http://blogzarro.com/images/spiderman_villains/vulture.jpg"
             }
         },
         {
@@ -878,7 +879,7 @@
             "properties": {
                 "name": "Wolverine",
                 "description": "<img src=\"http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Alberta, Canada.James Howlett \"Logan\"",
-                "gx_media_links": "http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG"
+                "image": "http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG"
             }
         }
     ]
