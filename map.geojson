@@ -28,7 +28,7 @@
                 ]
             },
             "properties": {
-                "marker-symbol": "marker-stroked",
+                "marker-symbol": "circle",
                 "name": "Apocalypse",
                 "description": "<img src=\"http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Akkaba, Eygpt.En Sabah Nur",
                 "image": "http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg"
@@ -637,6 +637,7 @@
                 ]
             },
             "properties": {
+                "marker-symbol": "circle",
                 "name": "Nightcrawler",
                 "description": "<img src=\"http://www.megatokyo.com/rantimgs/0237.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bavaria, Germany.Kurt Wagner",
                 "image": "http://www.megatokyo.com/rantimgs/0237.jpg"
@@ -877,6 +878,7 @@
                 ]
             },
             "properties": {
+                "marker-symbol": "circle",
                 "name": "Wolverine",
                 "description": "<img src=\"http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Alberta, Canada.James Howlett \"Logan\"",
                 "image": "http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG"
