@@ -1,288 +1,885 @@
-toGeoJSON = (function() {
-    'use strict';
-
-    var removeSpace = (/\s*/g),
-        trimSpace = (/^\s*|\s*$/g),
-        splitSpace = (/\s+/);
-    // generate a short, numeric hash of a string
-    function okhash(x) {
-        if (!x || !x.length) return 0;
-        for (var i = 0, h = 0; i < x.length; i++) {
-            h = ((h << 5) - h) + x.charCodeAt(i) | 0;
-        } return h;
-    }
-    // all Y children of X
-    function get(x, y) { return x.getElementsByTagName(y); }
-    function attr(x, y) { return x.getAttribute(y); }
-    function attrf(x, y) { return parseFloat(attr(x, y)); }
-    // one Y child of X, if any, otherwise null
-    function get1(x, y) { var n = get(x, y); return n.length ? n[0] : null; }
-    // https://developer.mozilla.org/en-US/docs/Web/API/Node.normalize
-    function norm(el) { if (el.normalize) { el.normalize(); } return el; }
-    // cast array x into numbers
-    function numarray(x) {
-        for (var j = 0, o = []; j < x.length; j++) o[j] = parseFloat(x[j]);
-        return o;
-    }
-    function clean(x) {
-        var o = {};
-        for (var i in x) if (x[i]) o[i] = x[i];
-        return o;
-    }
-    // get the content of a text node, if any
-    function nodeVal(x) {
-        if (x) { norm(x); }
-        return (x && x.firstChild && x.firstChild.nodeValue) || '';
-    }
-    // get one coordinate from a coordinate array, if any
-    function coord1(v) { return numarray(v.replace(removeSpace, '').split(',')); }
-    // get all coordinates from a coordinate array as [[],[]]
-    function coord(v) {
-        var coords = v.replace(trimSpace, '').split(splitSpace),
-            o = [];
-        for (var i = 0; i < coords.length; i++) {
-            o.push(coord1(coords[i]));
-        }
-        return o;
-    }
-    function coordPair(x) {
-        var ll = [attrf(x, 'lon'), attrf(x, 'lat')],
-            ele = get1(x, 'ele');
-        if (ele) ll.push(parseFloat(nodeVal(ele)));
-        return ll;
-    }
-
-    // create a new feature collection parent object
-    function fc() {
-        return {
-            type: 'FeatureCollection',
-            features: []
-        };
-    }
-
-    var serializer;
-    if (typeof XMLSerializer !== 'undefined') {
-        serializer = new XMLSerializer();
-    // only require xmldom in a node environment
-    } else if (typeof exports === 'object' && typeof process === 'object' && !process.browser) {
-        serializer = new (require('xmldom').XMLSerializer)();
-    }
-    function xml2str(str) { return serializer.serializeToString(str); }
-
-    var t = {
-        kml: function(doc, o) {
-            o = o || {};
-
-            var gj = fc(),
-                // styleindex keeps track of hashed styles in order to match features
-                styleIndex = {},
-                // atomic geospatial types supported by KML - MultiGeometry is
-                // handled separately
-                geotypes = ['Polygon', 'LineString', 'Point', 'Track'],
-                // all root placemarks in the file
-                placemarks = get(doc, 'Placemark'),
-                styles = get(doc, 'Style');
-
-            for (var k = 0; k < styles.length; k++) {
-                styleIndex['#' + attr(styles[k], 'id')] = okhash(xml2str(styles[k])).toString(16);
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.374596,
+                    40.892169,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Angel",
+                "description": "<img src=\"http://images2.wikia.nocookie.net/marveldatabase/images/a/a6/Archangel_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Centerport, USA.<br>Warren Kenneth Worthington III",
+                "gx_media_links": "http://images2.wikia.nocookie.net/marveldatabase/images/a/a6/Archangel_001.jpg"
             }
-            for (var j = 0; j < placemarks.length; j++) {
-                gj.features = gj.features.concat(getPlacemark(placemarks[j]));
-            }
-            function kmlColor(v) {
-                var color, opacity;
-                v = v || "";
-                if (v.substr(0, 1) === "#") v = v.substr(1);
-                if (v.length === 6 || v.length === 3) color = v;
-                if (v.length === 8) {
-                    opacity = parseInt(v.substr(0, 2), 16) / 255;
-                    color = v.substr(2);
-                }
-                return [color, isNaN(opacity) ? undefined : opacity];
-            }
-            function gxCoord(v) { return numarray(v.split(' ')); }
-            function gxCoords(root) {
-                var elems = get(root, 'coord', 'gx'), coords = [];
-                for (var i = 0; i < elems.length; i++) coords.push(gxCoord(nodeVal(elems[i])));
-                return coords;
-            }
-            function getGeometry(root) {
-                var geomNode, geomNodes, i, j, k, geoms = [];
-                if (get1(root, 'MultiGeometry')) return getGeometry(get1(root, 'MultiGeometry'));
-                if (get1(root, 'MultiTrack')) return getGeometry(get1(root, 'MultiTrack'));
-                for (i = 0; i < geotypes.length; i++) {
-                    geomNodes = get(root, geotypes[i]);
-                    if (geomNodes) {
-                        for (j = 0; j < geomNodes.length; j++) {
-                            geomNode = geomNodes[j];
-                            if (geotypes[i] == 'Point') {
-                                geoms.push({
-                                    type: 'Point',
-                                    coordinates: coord1(nodeVal(get1(geomNode, 'coordinates')))
-                                });
-                            } else if (geotypes[i] == 'LineString') {
-                                geoms.push({
-                                    type: 'LineString',
-                                    coordinates: coord(nodeVal(get1(geomNode, 'coordinates')))
-                                });
-                            } else if (geotypes[i] == 'Polygon') {
-                                var rings = get(geomNode, 'LinearRing'),
-                                    coords = [];
-                                for (k = 0; k < rings.length; k++) {
-                                    coords.push(coord(nodeVal(get1(rings[k], 'coordinates'))));
-                                }
-                                geoms.push({
-                                    type: 'Polygon',
-                                    coordinates: coords
-                                });
-                            } else if (geotypes[i] == 'Track') {
-                                geoms.push({
-                                    type: 'LineString',
-                                    coordinates: gxCoords(geomNode)
-                                });
-                            }
-                        }
-                    }
-                }
-                return geoms;
-            }
-            function getPlacemark(root) {
-                var geoms = getGeometry(root), i, properties = {},
-                    name = nodeVal(get1(root, 'name')),
-                    styleUrl = nodeVal(get1(root, 'styleUrl')),
-                    description = nodeVal(get1(root, 'description')),
-                    timeSpan = get1(root, 'TimeSpan'),
-                    extendedData = get1(root, 'ExtendedData'),
-                    lineStyle = get1(root, 'LineStyle'),
-                    polyStyle = get1(root, 'PolyStyle');
-
-                if (!geoms.length) return [];
-                if (name) properties.name = name;
-                if (styleUrl && styleIndex[styleUrl]) {
-                    properties.styleUrl = styleUrl;
-                    properties.styleHash = styleIndex[styleUrl];
-                }
-                if (description) properties.description = description;
-                if (timeSpan) {
-                    var begin = nodeVal(get1(timeSpan, 'begin'));
-                    var end = nodeVal(get1(timeSpan, 'end'));
-                    properties.timespan = { begin: begin, end: end };
-                }
-                if (lineStyle) {
-                    var linestyles = kmlColor(nodeVal(get1(lineStyle, 'color'))),
-                        color = linestyles[0],
-                        opacity = linestyles[1],
-                        width = parseFloat(nodeVal(get1(lineStyle, 'width')));
-                    if (color) properties.stroke = color;
-                    if (!isNaN(opacity)) properties['stroke-opacity'] = opacity;
-                    if (!isNaN(width)) properties['stroke-width'] = width;
-                }
-                if (polyStyle) {
-                    var polystyles = kmlColor(nodeVal(get1(polyStyle, 'color'))),
-                        pcolor = polystyles[0],
-                        popacity = polystyles[1],
-                        fill = nodeVal(get1(polyStyle, 'fill')),
-                        outline = nodeVal(get1(polyStyle, 'outline'));
-                    if (pcolor) properties.fill = pcolor;
-                    if (!isNaN(popacity)) properties['fill-opacity'] = popacity;
-                    if (fill) properties['fill-opacity'] = fill === "1" ? 1 : 0;
-                    if (outline) properties['stroke-opacity'] = outline === "1" ? 1 : 0;
-                }
-                if (extendedData) {
-                    var datas = get(extendedData, 'Data'),
-                        simpleDatas = get(extendedData, 'SimpleData');
-
-                    for (i = 0; i < datas.length; i++) {
-                        properties[datas[i].getAttribute('name')] = nodeVal(get1(datas[i], 'value'));
-                    }
-                    for (i = 0; i < simpleDatas.length; i++) {
-                        properties[simpleDatas[i].getAttribute('name')] = nodeVal(simpleDatas[i]);
-                    }
-                }
-                return [{
-                    type: 'Feature',
-                    geometry: (geoms.length === 1) ? geoms[0] : {
-                        type: 'GeometryCollection',
-                        geometries: geoms
-                    },
-                    properties: properties
-                }];
-            }
-            return gj;
         },
-        gpx: function(doc, o) {
-            var i,
-                tracks = get(doc, 'trk'),
-                routes = get(doc, 'rte'),
-                waypoints = get(doc, 'wpt'),
-                // a feature collection
-                gj = fc();
-            for (i = 0; i < tracks.length; i++) {
-                gj.features.push(getTrack(tracks[i]));
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.614632,
+                    25.751043,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Apocalypse",
+                "description": "<img src=\"http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Akkaba, Eygpt.En Sabah Nur",
+                "gx_media_links": "http://www.adherents.com/lit/comics/img/a/Apocalypse.jpg"
             }
-            for (i = 0; i < routes.length; i++) {
-                gj.features.push(getRoute(routes[i]));
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.971376,
+                    40.674503,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Aunt May",
+                "description": "<img src=\"http://images3.wikia.nocookie.net/marveldatabase/images/c/c8/May_Parker_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.<br><br><br>May Reilly Parker",
+                "gx_media_links": "http://images3.wikia.nocookie.net/marveldatabase/images/c/c8/May_Parker_001.jpg"
             }
-            for (i = 0; i < waypoints.length; i++) {
-                gj.features.push(getPoint(waypoints[i]));
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.971891,
+                    40.674454,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Ben Parker",
+                "description": "<img src=\"http://www.comicsfan.it/wordpress/wp-content/uploads/2008/10/ben_parker.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Benjamin Parker",
+                "gx_media_links": "http://www.comicsfan.it/wordpress/wp-content/uploads/2008/10/ben_parker.jpg"
             }
-            function getPoints(node, pointname) {
-                var pts = get(node, pointname), line = [];
-                for (var i = 0; i < pts.length; i++) {
-                    line.push(coordPair(pts[i]));
-                }
-                return line;
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.164165,
+                    39.951234,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Betty Brant",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/6/64/BettyBrant-Headshot.jpg/440px-BettyBrant-Headshot.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Philadelphia, USA.<br>Betty Brant",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/6/64/BettyBrant-Headshot.jpg/440px-BettyBrant-Headshot.jpg"
             }
-            function getTrack(node) {
-                var segments = get(node, 'trkseg'), track = [];
-                for (var i = 0; i < segments.length; i++) {
-                    track.push(getPoints(segments[i], 'trkpt'));
-                }
-                return {
-                    type: 'Feature',
-                    properties: getProperties(node),
-                    geometry: {
-                        type: track.length === 1 ? 'LineString' : 'MultiLineString',
-                        coordinates: track.length === 1 ? track[0] : track
-                    }
-                };
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.848639,
+                    40.723389,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Black Cat",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/d/d6/Black_cat_small.jpg/440px-Black_cat_small.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.Felicia Hardy",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/d/d6/Black_cat_small.jpg/440px-Black_cat_small.jpg"
             }
-            function getRoute(node) {
-                return {
-                    type: 'Feature',
-                    properties: getProperties(node),
-                    geometry: {
-                        type: 'LineString',
-                        coordinates: getPoints(node, 'rtept')
-                    }
-                };
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    133.881154,
+                    -23.699275,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Boomerang",
+                "description": "<img src=\"http://www.marveldirectory.com/pictures/individuals/b_1d/boomerang.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Alice Springs, Australia.<br><br>Fred Myers",
+                "gx_media_links": "http://www.marveldirectory.com/pictures/individuals/b_1d/boomerang.gif"
             }
-            function getPoint(node) {
-                var prop = getProperties(node);
-                prop.sym = nodeVal(get1(node, 'sym'));
-                return {
-                    type: 'Feature',
-                    properties: prop,
-                    geometry: {
-                        type: 'Point',
-                        coordinates: coordPair(node)
-                    }
-                };
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.984938,
+                    40.755125,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Captain America",
+                "description": "<img src=\"http://www.comicbookmovie.com/images/news/captain-america/CaptainAmerica.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.Steven Rogers",
+                "gx_media_links": "http://www.comicbookmovie.com/images/news/captain-america/CaptainAmerica.jpg"
             }
-            function getProperties(node) {
-                var meta = ['name', 'desc', 'author', 'copyright', 'link',
-                            'time', 'keywords'],
-                    prop = {},
-                    k;
-                for (k = 0; k < meta.length; k++) {
-                    prop[meta[k]] = nodeVal(get1(node, meta[k]));
-                }
-                return clean(prop);
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.97084,
+                    40.67443800000001,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Carnage",
+                "description": "<img src=\"http://www.stationanywhere.com/ajm/thewebofspidey/images/Carnage%202.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Cletus Kasady",
+                "gx_media_links": "http://www.stationanywhere.com/ajm/thewebofspidey/images/Carnage%202.jpg"
             }
-            return gj;
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -149.902439,
+                    61.215644,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Cyclops",
+                "description": "<img src=\"http://www.geocities.com/Area51/Hollow/9106/Cyclops1.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Anchorage, USA.Scott Summers",
+                "gx_media_links": "http://www.geocities.com/Area51/Hollow/9106/Cyclops1.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.985689,
+                    40.754994,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Daredevil",
+                "description": "<img src=\"http://www.freewebs.com/luke-hereford/daredevil.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Matthew Michael Murdock",
+                "gx_media_links": "http://www.freewebs.com/luke-hereford/daredevil.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.992201,
+                    40.742583,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Doctor Octopus",
+                "description": "<img src=\"http://fc04.deviantart.com/fs42/f/2009/068/3/9/Spidey_vs_Doc_Ock___BDog_color_by_spiderguile.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Schenectady, USA.<br>Otto Gunther Octavius",
+                "gx_media_links": "http://fc04.deviantart.com/fs42/f/2009/068/3/9/Spidey_vs_Doc_Ock___BDog_color_by_spiderguile.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.163715,
+                    39.951135,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Doctor Strange",
+                "description": "<img src=\"http://www.geocities.com/patchlord/imagem/dr_strange.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Philadelphia, USA.Stephen Vincent Strange",
+                "gx_media_links": "http://www.geocities.com/patchlord/imagem/dr_strange.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.065302,
+                    42.097936,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Electro",
+                "description": "<img src=\"http://dave16.files.wordpress.com/2008/08/200px-electro11.jpg\" height=\"200\" width=\"auto\" /><br><br>Place or birth: Endicott, USA.<br>Maxwell Dillon",
+                "gx_media_links": "http://dave16.files.wordpress.com/2008/08/200px-electro11.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.85499,
+                    40.710199,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Flash Thompson",
+                "description": "<img src=\"http://media.comicvine.com/uploads/0/40/75798-128465-flash-thompson_large.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Forrest Hills, USA.<br>Eugene Thompson",
+                "gx_media_links": "http://media.comicvine.com/uploads/0/40/75798-128465-flash-thompson_large.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.068665,
+                    29.952332,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Gambit",
+                "description": "<img src=\"http://www.gearcritech.com/images/update031705_gambit.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New Orleans, USARemy Etienne LeBeau",
+                "gx_media_links": "http://www.gearcritech.com/images/update031705_gambit.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.673531,
+                    41.765966,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Green Goblin",
+                "description": "<img src=\"http://i102.photobucket.com/albums/m119/gambit212_2006/Green_Goblin002.jpg?t=1241193451\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Hartford, USA.Norman Osborn",
+                "gx_media_links": "http://i102.photobucket.com/albums/m119/gambit212_2006/Green_Goblin002.jpg?t=1241193451"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.350645,
+                    48.856132,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Grey Goblin",
+                "description": "<img src=\"http://media.comicvine.com/uploads/0/378/120188-85716-grey-goblin_large.jpeg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Paris, France.Gabriel Stacy",
+                "gx_media_links": "http://media.comicvine.com/uploads/0/378/120188-85716-grey-goblin_large.jpeg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.874832,
+                    42.360066,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Ghost Rider",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/8/8a/GhostRiderDanny442.jpg/440px-GhostRiderDanny442.jpg\" height=\"200\" width=\"auto\" /><br><br>Pace of birth: Waukegan, USA.<br>Johnny Blaze",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/8/8a/GhostRiderDanny442.jpg/440px-GhostRiderDanny442.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.98523800000001,
+                    40.754539,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Harry Osborn",
+                "description": "<img src=\"http://www.samruby.com/Spiderverse/HarryOsborn/HarryOsborn.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br><br>Harold Osborn",
+                "gx_media_links": "http://www.samruby.com/Spiderverse/HarryOsborn/HarryOsborn.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -157.822187,
+                    21.291794,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Havok",
+                "description": "<img src=\"http://images1.wikia.nocookie.net/marveldatabase/images/thumb/7/74/Havok_(Alex_Summers)_018.jpg/200px-Havok_(Alex_Summers)_018.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Honolulu, USA.Alexander Summers",
+                "gx_media_links": "http://images1.wikia.nocookie.net/marveldatabase/images/thumb/7/74/Havok_(Alex_Summers)_018.jpg/200px-Havok_(Alex_Summers)_018.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.970819,
+                    40.674975,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Hobgoblin (Ned Leeds)",
+                "description": "<img src=\"http://www.samruby.com/Villains/HobgoblinI/HobgoblinHL3.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Ned Leeds",
+                "gx_media_links": "http://www.samruby.com/Villains/HobgoblinI/HobgoblinHL3.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.807687,
+                    40.674942,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Human Torch",
+                "description": "<img src=\"http://wiw.org/~jess/wp-uploads/human_torch.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Glenville, USA.Jonathan Lowell Spencer Storm",
+                "gx_media_links": "http://wiw.org/~jess/wp-uploads/human_torch.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.206128,
+                    39.76273,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Hulk",
+                "description": "<img src=\"http://www.gistudios.com/images/Artists/Atkins/Marvel_Hulk.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Dayton, USA.Robert Bruce Banner",
+                "gx_media_links": "http://www.gistudios.com/images/Artists/Atkins/Marvel_Hulk.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.915329,
+                    40.824722,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Hydro-Man",
+                "description": "<img src=\"http://media.comicvine.com/uploads/0/77/118241-145233-hydro-man_thumb.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bronx, USA.<br>Morris Bench",
+                "gx_media_links": "http://media.comicvine.com/uploads/0/77/118241-145233-hydro-man_thumb.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.68232,
+                    40.824851,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Iceman",
+                "description": "<img src=\"http://i14.photobucket.com/albums/a339/BEN614/Iceman442px.jpg?t=1241194956\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Port Washington, USA.Robert Louis Drake",
+                "gx_media_links": "http://i14.photobucket.com/albums/a339/BEN614/Iceman442px.jpg?t=1241194956"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.80641,
+                    40.674845,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Invisible Woman",
+                "description": "<img src=\"http://www.superherodb.com/pictures/portraits/invisible-woman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Glenville, USA..Susan Storm Richards",
+                "gx_media_links": "http://www.superherodb.com/pictures/portraits/invisible-woman.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.135128,
+                    40.789307,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Iron Man",
+                "description": "<img src=\"http://images.paraorkut.com/img/pics/images/i/iron_man-5983.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Long Island, USA.Anthony Edward  Stark",
+                "gx_media_links": "http://images.paraorkut.com/img/pics/images/i/iron_man-5983.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.97141900000001,
+                    40.67491,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Jackel",
+                "description": "<img src=\"http://www.samruby.com/Villains/Jackal/JackalJacket.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Brooklyn, USA.Miles Warren",
+                "gx_media_links": "http://www.samruby.com/Villains/Jackal/JackalJacket.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.057961,
+                    42.358687,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Jack O'Lantern",
+                "description": "<img src=\"http://www.samruby.com/Villains/JackOLantern/Jack.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Boston, USA.Jason Philip Macendale Jr.",
+                "gx_media_links": "http://www.samruby.com/Villains/JackOLantern/Jack.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.986526,
+                    40.75623,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "J. Jonah Jameson",
+                "description": "<img src=\"http://images.wizarduniverse.com/WizardUniverse/magazinepics/characters8/5.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>John Jonah Jameson",
+                "gx_media_links": "http://images.wizarduniverse.com/WizardUniverse/magazinepics/characters8/5.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.945198,
+                    40.808612,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Joseph \"Robbie\" Robertson",
+                "description": "<img src=\"http://www.marvunapp.com/Appendix4/earthspiderarms17.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Harlem, USA.<br>Joseph \"Robbie\" Robertson",
+                "gx_media_links": "http://www.marvunapp.com/Appendix4/earthspiderarms17.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.268219,
+                    37.872262,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Juggernaut",
+                "description": "<img src=\"http://brownman.com/Images/Juggernaut.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Berkeley, USA.Cain Marko",
+                "gx_media_links": "http://brownman.com/Images/Juggernaut.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    44.504349,
+                    48.716387,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Kraven",
+                "description": "<img src=\"http://www.samruby.com/Villains/Kraven/Kraven.gif\" height=\"200\" width=\"auto\" /><br><br>Places of birth: Volgrad, Russia.Sergei Kravinoff",
+                "gx_media_links": "http://www.samruby.com/Villains/Kraven/Kraven.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.271499,
+                    25.704998,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Lizard",
+                "description": "<img src=\"http://static.ulike.net/img/01_Lizard_%28Character%29.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Coral Gables, USA.Curtis Connors",
+                "gx_media_links": "http://static.ulike.net/img/01_Lizard_%28Character%29.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -123.027477,
+                    44.937205,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Madame Web",
+                "description": "<img src=\"http://images3.wikia.nocookie.net/marveldatabase/images/thumb/a/ae/Madame_Web_001.jpg/200px-Madame_Web_001.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Salem, USA.Cassandra Webb",
+                "gx_media_links": "http://images3.wikia.nocookie.net/marveldatabase/images/thumb/a/ae/Madame_Web_001.jpg/200px-Madame_Web_001.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.922214,
+                    41.248983,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Mary Jane Watson-Parker",
+                "description": "<img src=\"http://360.kombo.com/images/content/news/blurb_200px-Mary_Jane_Watson_002_20081014.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Montoursville, USA.<br><br>Mary Jane Watson-Parker",
+                "gx_media_links": "http://360.kombo.com/images/content/news/blurb_200px-Mary_Jane_Watson_002_20081014.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.891406,
+                    33.740115,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Mr. Fantastic",
+                "description": "<img src=\"http://i43.photobucket.com/albums/e391/camel19/105459-mr-fantastic_400cropped.jpg?t=1241195038\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Central City, USA.Reed Richards",
+                "gx_media_links": "http://i43.photobucket.com/albums/e391/camel19/105459-mr-fantastic_400cropped.jpg?t=1241195038"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.40114700000001,
+                    33.947062,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Mysterio",
+                "description": "<img src=\"http://www.samruby.com/Villains/Mysterio/MysterioPoint.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Riverside, USA.Quentin Beck",
+                "gx_media_links": "http://www.samruby.com/Villains/Mysterio/MysterioPoint.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.498137,
+                    48.790157,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Nightcrawler",
+                "description": "<img src=\"http://www.megatokyo.com/rantimgs/0237.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bavaria, Germany.Kurt Wagner",
+                "gx_media_links": "http://www.megatokyo.com/rantimgs/0237.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.986654,
+                    40.754799,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Professor X",
+                "description": "<img src=\"http://www.marveldirectory.com/pictures/individuals/p_1d/professorx1.gif\" height=\"200\" width=\"auto\" /><br><br>Pace of birth: New York, USA.Charles Francis Xavier",
+                "gx_media_links": "http://www.marveldirectory.com/pictures/individuals/p_1d/professorx1.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.922539,
+                    40.826394,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Prowler",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/e/ee/Prowler333.jpg/440px-Prowler333.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Bronx, USA",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/e/ee/Prowler333.jpg/440px-Prowler333.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.804446,
+                    41.024807,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Puma",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/9/9b/Pumaaa.jpg/440px-Pumaaa.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Hartsdale, USA.<br>Thomas Fireheart",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/9/9b/Pumaaa.jpg/440px-Pumaaa.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.846536,
+                    40.723323,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Punisher",
+                "description": "<img src=\"http://www.thepunisher.co.uk/assets/images/ThePunisher.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.Frank Castle (born Castiglione)",
+                "gx_media_links": "http://www.thepunisher.co.uk/assets/images/ThePunisher.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.848209,
+                    40.722413,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Sandman",
+                "description": "<img src=\"http://upload.wikimedia.org/wikipedia/en/thumb/7/79/Tboltssandman.jpg/250px-Tboltssandman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Queens, USA.<br>William Baker(Flint Marko)",
+                "gx_media_links": "http://upload.wikimedia.org/wikipedia/en/thumb/7/79/Tboltssandman.jpg/250px-Tboltssandman.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.895867,
+                    40.93958200000001,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Scorpion",
+                "description": "<img src=\"http://www.leaderslair.com/marvelvillains/Scorpion.gif\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Yonkers, USA.Mac Gargan",
+                "gx_media_links": "http://www.leaderslair.com/marvelvillains/Scorpion.gif"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.24439000000001,
+                    34.051948,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "She-Hulk",
+                "description": "<img src=\"http://www.fantomcomics.com/she-hulk-onea.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Los Angeles, USA.Jennifer Susan Walters",
+                "gx_media_links": "http://www.fantomcomics.com/she-hulk-onea.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.987684,
+                    40.75623,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Shocker",
+                "description": "<img src=\"http://blogzarro.com/images/spiderman_villains/shocker.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Herman Schultz",
+                "gx_media_links": "http://blogzarro.com/images/spiderman_villains/shocker.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.855076,
+                    40.709922,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Spider-Man",
+                "description": "<img src=\"http://leftonmission.com/blog/uploaded_images/Spidey-731888.jpg?q=leftonmission/blog/uploaded_images/Spidey-731888.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Forrest Hills, USA.<br>Peter Benjamin Parker",
+                "gx_media_links": "http://leftonmission.com/blog/uploaded_images/Spidey-731888.jpg?q=leftonmission/blog/uploaded_images/Spidey-731888.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.126504,
+                    51.500001,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Spider-Woman",
+                "description": "<img src=\"http://www.adherents.com/lit/comics/img/s/SpiderWoman.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: London, England.Jessica Drew",
+                "gx_media_links": "http://www.adherents.com/lit/comics/img/s/SpiderWoman.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.988371,
+                    40.755125,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Storm",
+                "description": "<img src=\"http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Uxm449.jpg/250px-Uxm449.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: New York, USA.<br>Ororo Munroe",
+                "gx_media_links": "http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Uxm449.jpg/250px-Uxm449.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.988135,
+                    40.749728,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Thing",
+                "description": "<img src=\"http://www.marvel.com/universe3zx/images/thumb/7/70/1602_thing.jpg/440px-1602_thing.jpg\" height=\"200\" width=\"auto\" /><br><br>Places of birth: Manhattan, USA..Benjamin Jacob Grimm",
+                "gx_media_links": "http://www.marvel.com/universe3zx/images/thumb/7/70/1602_thing.jpg/440px-1602_thing.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.41859400000001,
+                    37.776142,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Venom",
+                "description": "<img src=\"http://www.comicbookmovie.com/images/news/fantastic-four-2/venom.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: San-Francisco, USA.Edward Brock",
+                "gx_media_links": "http://www.comicbookmovie.com/images/news/fantastic-four-2/venom.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.162039,
+                    40.607420000000005,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Vulture ",
+                "description": "<img src=\"http://blogzarro.com/images/spiderman_villains/vulture.jpg\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Staten Island, USA.Adrian Toomes",
+                "gx_media_links": "http://blogzarro.com/images/spiderman_villains/vulture.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -116.768188,
+                    53.956086000000006,
+                    0
+                ]
+            },
+            "properties": {
+                "name": "Wolverine",
+                "description": "<img src=\"http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG\" height=\"200\" width=\"auto\" /><br><br>Place of birth: Alberta, Canada.James Howlett \"Logan\"",
+                "gx_media_links": "http://www.uweb.ucsb.edu/%7Ekarina_r11/wolverine14.JPG"
+            }
         }
-    };
-    return t;
-})();
-
-if (typeof module !== 'undefined') module.exports = toGeoJSON;
+    ]
+}
