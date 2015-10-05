@@ -13,9 +13,10 @@
             },
             "properties": {
                 "name": "Angel",
-                "marvel-api-id": "1009153",
-                "other ids": "1009159",
-                "description": "Place of birth: Centerport, USA.<br>Warren Kenneth Worthington III",
+                "marvel_api_id": "1009153",
+                "marvel_api_id2": "1009159",
+                "place_of_birth": "Centerport, USA",
+                "real_name": "Warren Kenneth Worthington III",
                 "image": ""
             }
         },
@@ -32,8 +33,9 @@
             "properties": {
                 "marker-symbol": "circle",
                 "name": "Apocalypse",
-                "marvel-api-id": "1009156",
-                "description": "Place of birth: Akkaba, Eygpt.En Sabah Nur",
+                "marvel_api_id": "1009156",
+                "place_of_birth": "Akkaba, Eygpt",
+                "real_name": "Sabah Nur",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/f/e0/526166076a1d0.jpg"
             }
         },
@@ -49,8 +51,9 @@
             },
             "properties": {
                 "name": "Aunt May",
-                "marvel-api-id": "1009490",
-                "description": "Place of birth: Brooklyn, USA.<br><br><br>May Reilly Parker",
+                "marvel_api_id": "1009490",
+                "place_of_birth": "Brooklyn, USA",
+                "real_name": "May Reilly Parker",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/c/30/535fec80bb4a6.jpg"
             }
         },
@@ -66,8 +69,9 @@
             },
             "properties": {
                 "name": "Ben Parker",
-                "marvel-api-id": "1009489",
-                "description": "Place of birth: Brooklyn, USA.Benjamin Parker",
+                "marvel_api_id": "1009489",
+                "place_of_birth": "Brooklyn, USA",
+                "real_name": "Benjamin Parker",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/8/c0/4c003d00c8ed9.jpg"
             }
         },
@@ -83,8 +87,9 @@
             },
             "properties": {
                 "name": "Betty Brant",
-                "marvel-api-id": "1010325",
-                "description": "Place of birth: Philadelphia, USA.<br>Betty Brant",
+                "marvel_api_id": "1010325",
+                "place_of_birth": "Philadelphia, USA",
+                "real_name": "Betty Brant",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/9/a0/4c7c644f453fb.jpg"
             }
         },
@@ -100,8 +105,9 @@
             },
             "properties": {
                 "name": "Black Cat",
-                "marvel-api-id": "1009185",
-                "description": "Place of birth: Queens, USA.Felicia Hardy",
+                "marvel_api_id": "1009185",
+                "place_of_birth": "Queens, USA",
+                "real_name": "Felicia Hardy",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/e/03/526952357d91c.jpg"
             }
         },
@@ -117,8 +123,9 @@
             },
             "properties": {
                 "name": "Boomerang",
-                "marvel-api-id": "1010371",
-                "description": "Place of birth: Alice Springs, Australia.<br><br>Fred Myers",
+                "marvel_api_id": "1010371",
+                "place_of_birth": "Alice Springs, Northern Territory, Australia",
+                "real_name": "Fred Myers",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/2/30/4c00390504a3b.jpg"
             }
         },
@@ -134,8 +141,9 @@
             },
             "properties": {
                 "name": "Captain America",
-                "marvel-api-id": "1009220",
-                "description": "Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.<br><br>Place of birth: New York, USA.Steven Rogers",
+                "marvel_api_id": "1009220",
+                "place_of_birth": "New York, USA",
+                "real_name": "Steven Rogers",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087.jpg"
             }
         },
@@ -151,8 +159,9 @@
             },
             "properties": {
                 "name": "1009227",
-                "marvel-api-id": "1009220",
-                "description": "Place of birth: Brooklyn, USA.Cletus Kasady",
+                "marvel_api_id": "1009220",
+                "place_of_birth": "Brooklyn, USA",
+                "real_name": "Cletus Kasady",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/6/50/535fee423f170.jpg"
             }
         },
@@ -168,8 +177,9 @@
             },
             "properties": {
                 "name": "Cyclops",
-                "marvel-api-id": "1009257",
-                "description": "Place of birth: Anchorage, USA.Scott Summers",
+                "marvel_api_id": "1009257",
+                "place_of_birth": "Anchorage, USA",
+                "real_name": "Scott Summers",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/6/70/526547e2d90ad.jpg"
             }
         },
@@ -185,8 +195,9 @@
             },
             "properties": {
                 "name": "Daredevil",
-                "marvel-api-id": "1009262",
-                "description": "Abandoned by his mother, Matt Murdock was raised by his father, boxer \"Battling Jack\" Murdock, in Hell's Kitchen. Realizing that rules were needed to prevent people from behaving badly, young Matt decided to study law; however, when he saved a man from an oncoming truck, it spilled a radioactive cargo that rendered Matt blind while enhancing his remaining senses. Under the harsh tutelage of blind martial arts master Stick, Matt mastered his heightened senses and became a formidable fighter.<br><br>Place of birth: New York, USA.<br>Matthew Michael Murdock",
+                "marvel_api_id": "1009262",
+                "place_of_birth": "New York, USA",
+                "real_name": "Matthew Michael Murdock",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/d/50/50febb79985ee.jpg"
             }
         },
@@ -202,8 +213,9 @@
             },
             "properties": {
                 "name": "Doctor Octopus",
-                "marvel-api-id": "1009276",
-                "description": "Place of birth: Schenectady, USA.<br>Otto Gunther Octavius",
+                "marvel_api_id": "1009276",
+                "place_of_birth": "chenectady, USA",
+                "real_name": "Otto Gunther Octavius",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/b/b0/528d31b62eaba.jpg"
             }
         },
@@ -219,8 +231,9 @@
             },
             "properties": {
                 "name": "Doctor Strange",
-                "marvel-api-id": "1009282",
-                "description": "Place of birth: Philadelphia, USA. Stephen Vincent Strange",
+                "marvel_api_id": "1009282",
+                "place_of_birth": "Philadelphia, USA",
+                "real_name": "Stephen Vincent Strange",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/5/f0/5261a85a501fe.jpg"
             }
         },
@@ -236,8 +249,9 @@
             },
             "properties": {
                 "name": "Electro",
-                "marvel-api-id": "1009287",
-                "description": "Place or birth: Endicott, USA. Maxwell Dillon",
+                "marvel_api_id": "1009287",
+                "place_of_birth": "Endicott, USA",
+                "real_name": "Maxwell Dillon",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/5/60/4c003f1214bd7.jpg"
             }
         },
@@ -253,8 +267,9 @@
             },
             "properties": {
                 "name": "Flash Thompson",
-                "marvel-api-id": "1009287",
-                "description": "Place of birth: Forrest Hills, USA. Eugene Thompson",
+                "marvel_api_id": "1009287",
+                "place_of_birth": "Forrest Hills, USA",
+                "real_name": "Eugene Thompson",
                 "image": ""
             }
         },
@@ -270,8 +285,9 @@
             },
             "properties": {
                 "name": "Gambit",
-                "marvel-api-id": "1009313",
-                "description": "Place of birth: New Orleans, USARemy Etienne LeBeau",
+                "marvel_api_id": "1009313",
+                "place_of_birth": "New Orleans, USA",
+                "real_name": "Remy Etienne LeBeau",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/a/40/52696aa8aee99.jpg"
             }
         },
@@ -287,8 +303,9 @@
             },
             "properties": {
                 "name": "Green Goblin",
-                "marvel-api-id": "1014985",
-                "description": "Place of birth: Hartford, USA. Norman Osborn",
+                "marvel_api_id": "1014985",
+                "place_of_birth": "Hartford, USA",
+                "real_name": "Norman Osborn",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/e/f0/4cd05ee55faa2.jpg"
             }
         },
@@ -304,8 +321,9 @@
             },
             "properties": {
                 "name": "Grey Goblin",
-                "marvel-api-id": "",
-                "description": "Place of birth: Paris, France. Gabriel Stacy",
+                "marvel_api_id": "",
+                "place_of_birth": "Paris, France",
+                "real_name": "Gabriel Stacy",
                 "image": ""
             }
         },
@@ -321,8 +339,9 @@
             },
             "properties": {
                 "name": "Ghost Rider",
-                "marvel-api-id": "1009318",
-                "description": "Pace of birth: Waukegan, USA. Johnny Blaze",
+                "marvel_api_id": "1009318",
+                "place_of_birth": "Waukegan, USA",
+                "real_name": "Johnny Blaze",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/3/80/52696ba1353e7.jpg"
             }
         },
@@ -338,8 +357,9 @@
             },
             "properties": {
                 "name": "Harry Osborn",
-                "marvel-api-id": "1009486",
-                "description": "Place of birth: New York, USA.<br><br>Harold Osborn",
+                "marvel_api_id": "1009486",
+                "place_of_birth": "New York, USA",
+                "real_name": "Harold Osborn",
                 "image": "http://i.annihil.us/u/prod/marvel/i/mg/8/e0/4ce5a0b3181d8.jpg"
             }
         },
@@ -355,8 +375,9 @@
             },
             "properties": {
                 "name": "Havok",
-                "marvel-api-id": "",
-                "description": "Place of birth: Honolulu, USA. Alexander Summers",
+                "marvel_api_id": "",
+                "place_of_birth": "Honolulu, USA",
+                "real_name": "Alexander Summers",
                 "image": ""
             }
         },
@@ -372,8 +393,9 @@
             },
             "properties": {
                 "name": "Hobgoblin (Ned Leeds)",
-                "marvel-api-id": "",
-                "description": "Place of birth: Brooklyn, USA. Ned Leeds",
+                "marvel_api_id": "",
+                "place_of_birth": "Brooklyn, USA",
+                "real_name": "Ned Leeds",
                 "image": ""
             }
         },
@@ -389,8 +411,9 @@
             },
             "properties": {
                 "name": "Human Torch",
-                "marvel-api-id": "",
-                "description": "Place of birth: Glenville, USA. Jonathan Lowell Spencer Storm",
+                "marvel_api_id": "",
+                "place_of_birth": "Glenville, USA",
+                "real_name": "Jonathan Lowell Spencer Storm",
                 "image": ""
             }
         },
@@ -406,8 +429,9 @@
             },
             "properties": {
                 "name": "Hulk",
-                "marvel-api-id": "",
-                "description": "Place of birth: Dayton, USA. Robert Bruce Banner",
+                "marvel_api_id": "",
+                "place_of_birth": "Dayton, USA",
+                "real_name": "Robert Bruce Banner",
                 "image": ""
             }
         },
@@ -423,8 +447,9 @@
             },
             "properties": {
                 "name": "Hydro-Man",
-                "marvel-api-id": "",
-                "description": "Place of birth: Bronx, USA. Morris Bench",
+                "marvel_api_id": "",
+                "place_of_birth": "Bronx, USA",
+                "real_name": "Morris Bench",
                 "image": ""
             }
         },
@@ -440,8 +465,9 @@
             },
             "properties": {
                 "name": "Iceman",
-                "marvel-api-id": "",
-                "description": "Place of birth: Port Washington, USA. Robert Louis Drake",
+                "marvel_api_id": "",
+                "place_of_birth": "Port Washington, USA",
+                "real_name": "Robert Louis Drake",
                 "image": ""
             }
         },
@@ -457,8 +483,9 @@
             },
             "properties": {
                 "name": "Invisible Woman",
-                "marvel-api-id": "",
-                "description": "Place of birth: Glenville, USA. Susan Storm Richards",
+                "marvel_api_id": "",
+                "place_of_birth": "Glenville, USA",
+                "real_name": "Susan Storm Richards",
                 "image": ""
             }
         },
@@ -474,8 +501,9 @@
             },
             "properties": {
                 "name": "Iron Man",
-                "marvel-api-id": "",
-                "description": "Place of birth: Long Island, USA.Anthony Edward  Stark",
+                "marvel_api_id": "",
+                "place_of_birth": "Long Island, USA",
+                "real_name": "Anthony Edward  Stark",
                 "image": ""
             }
         },
@@ -491,8 +519,9 @@
             },
             "properties": {
                 "name": "Jackel",
-                "marvel-api-id": "",
-                "description": "Place of birth: Brooklyn, USA. Miles Warren",
+                "marvel_api_id": "",
+                "place_of_birth": "Brooklyn, USA",
+                "real_name": "Miles Warren",
                 "image": ""
             }
         },
@@ -508,8 +537,9 @@
             },
             "properties": {
                 "name": "Jack O'Lantern",
-                "marvel-api-id": "",
-                "description": "Place of birth: Boston, USA. Jason Philip Macendale Jr.",
+                "marvel_api_id": "",
+                "place_of_birth": "Boston, USA",
+                "real_name": "Jason Philip Macendale Jr.",
                 "image": ""
             }
         },
@@ -525,8 +555,9 @@
             },
             "properties": {
                 "name": "J. Jonah Jameson",
-                "marvel-api-id": "",
-                "description": "Place of birth: New York, USA. John Jonah Jameson",
+                "marvel_api_id": "",
+                "place_of_birth": "New York, USA",
+                "real_name": "John Jonah Jameson",
                 "image": ""
             }
         },
@@ -542,8 +573,9 @@
             },
             "properties": {
                 "name": "Joseph \"Robbie\" Robertson",
-                "marvel-api-id": "",
-                "description": "Place of birth: Harlem, USA. Joseph \"Robbie\" Robertson",
+                "marvel_api_id": "",
+                "place_of_birth": "Harlem, USA",
+                "real_name": "Joseph \"Robbie\" Robertson",
                 "image": ""
             }
         },
@@ -559,8 +591,9 @@
             },
             "properties": {
                 "name": "Juggernaut",
-                "marvel-api-id": "",
-                "description": "Place of birth: Berkeley, USA. Cain Marko",
+                "marvel_api_id": "",
+                "place_of_birth": "Berkeley, USA",
+                "real_name": "Cain Marko",
                 "image": ""
             }
         },
@@ -576,8 +609,9 @@
             },
             "properties": {
                 "name": "Kraven",
-                "marvel-api-id": "",
-                "description": "Places of birth: Volgrad, Russia. Sergei Kravinoff",
+                "marvel_api_id": "",
+                "place_of_birth": "Volgrad, Russia",
+                "real_name": "Sergei Kravinoff",
                 "image": ""
             }
         },
@@ -593,8 +627,9 @@
             },
             "properties": {
                 "name": "Lizard",
-                "marvel-api-id": "",
-                "description": "Place of birth: Coral Gables, USA. Curtis Connors",
+                "marvel_api_id": "",
+                "place_of_birth": "Coral Gables, USA",
+                "real_name": "Curtis Connors",
                 "image": ""
             }
         },
@@ -610,8 +645,9 @@
             },
             "properties": {
                 "name": "Madame Web",
-                "marvel-api-id": "",
-                "description": "Place of birth: Salem, USA. Cassandra Webb",
+                "marvel_api_id": "",
+                "place_of_birth": "Salem, USA",
+                "real_name": "Cassandra Webb",
                 "image": ""
             }
         },
@@ -627,8 +663,9 @@
             },
             "properties": {
                 "name": "Mary Jane Watson-Parker",
-                "marvel-api-id": "",
-                "description": "Place of birth: Montoursville, USA. Mary Jane Watson-Parker",
+                "marvel_api_id": "",
+                "place_of_birth": "Montoursville, USA",
+                "real_name": "Mary Jane Watson-Parker",
                 "image": ""
             }
         },
@@ -644,8 +681,9 @@
             },
             "properties": {
                 "name": "Mr. Fantastic",
-                "marvel-api-id": "",
-                "description": "Place of birth: Central City, USA. Reed Richards",
+                "marvel_api_id": "",
+                "place_of_birth": "Central City",
+                "real_name": "Reed Richards",
                 "image": ""
             }
         },
@@ -661,8 +699,9 @@
             },
             "properties": {
                 "name": "Mysterio",
-                "marvel-api-id": "",
-                "description": "Place of birth: Riverside, USA. Quentin Beck",
+                "marvel_api_id": "",
+                "place_of_birth": "Riverside, USA",
+                "real_name": "Quentin Beck",
                 "image": ""
             }
         },
@@ -679,8 +718,9 @@
             "properties": {
                 "marker-symbol": "circle",
                 "name": "Nightcrawler",
-                "marvel-api-id": "",
-                "description": "Place of birth: Bavaria, Germany. Kurt Wagner",
+                "marvel_api_id": "",
+                "place_of_birth": "Bavaria, Germany",
+                "real_name": "Kurt Wagner",
                 "image": ""
             }
         },
@@ -696,8 +736,9 @@
             },
             "properties": {
                 "name": "Professor X",
-                "marvel-api-id": "",
-                "description": "Pace of birth: New York, USA. Charles Francis Xavier",
+                "marvel_api_id": "",
+                "place_of_birth": "New York, USA",
+                "real_name": "Charles Francis Xavier",
                 "image": ""
             }
         },
@@ -713,8 +754,9 @@
             },
             "properties": {
                 "name": "Prowler",
-                "marvel-api-id": "",
-                "description": "Place of birth: Bronx, USA. Hobie Brown",
+                "marvel_api_id": "",
+                "place_of_birth": "Bronx, USA",
+                "real_name": "Hobbie Brown",
                 "image": ""
             }
         },
@@ -730,8 +772,9 @@
             },
             "properties": {
                 "name": "Puma",
-                "marvel-api-id": "",
-                "description": "Place of birth: Hartsdale, USA. Thomas Fireheart",
+                "marvel_api_id": "",
+                "place_of_birth": "Hartsdale, USA",
+                "real_name": "Thomas Fireheart",
                 "image": ""
             }
         },
@@ -747,8 +790,9 @@
             },
             "properties": {
                 "name": "Punisher",
-                "marvel-api-id": "",
-                "description": "Place of birth: Queens, USA.Frank Castle (born Castiglione)",
+                "marvel_api_id": "",
+                "place_of_birth": "Queens, USA",
+                "real_name": "Frank Castle (born Castiglione)",
                 "image": ""
             }
         },
@@ -764,8 +808,9 @@
             },
             "properties": {
                 "name": "Sandman",
-                "marvel-api-id": "",
-                "description": "Place of birth: Queens, USA. William Baker(Flint Marko)",
+                "marvel_api_id": "",
+                "place_of_birth": "Queens, USA",
+                "real_name": "William Baker(Flint Marko)",
                 "image": ""
             }
         },
@@ -781,8 +826,9 @@
             },
             "properties": {
                 "name": "Scorpion",
-                "marvel-api-id": "",
-                "description": "Place of birth: Yonkers, USA Mac Gargan",
+                "marvel_api_id": "",
+                "place_of_birth": "Yonkers, USA",
+                "real_name": "Mac Gargan",
                 "image": ""
             }
         },
@@ -798,8 +844,9 @@
             },
             "properties": {
                 "name": "She-Hulk",
-                "marvel-api-id": "",
-                "description": "Place of birth: Los Angeles, USA. Jennifer Susan Walters",
+                "marvel_api_id": "",
+                "place_of_birth": "Los Angeles, USA",
+                "real_name": "Jennifer Susan Walters",
                 "image": ""
             }
         },
@@ -815,8 +862,9 @@
             },
             "properties": {
                 "name": "Shocker",
-                "marvel-api-id": "",
-                "description": "Place of birth: New York, USA. Herman Schultz",
+                "marvel_api_id": "",
+                "place_of_birth": "New York, USA",
+                "real_name": "Herman Schultz",
                 "image": ""
             }
         },
@@ -832,8 +880,9 @@
             },
             "properties": {
                 "name": "Spider-Man",
-                "marvel-api-id": "",
-                "description": "Place of birth: Forrest Hills, USA. Peter Benjamin Parker",
+                "marvel_api_id": "",
+                "place_of_birth": "Forrest Hills, USA",
+                "real_name": "Peter Benjamin Parker",
                 "image": ""
             }
         },
@@ -849,8 +898,9 @@
             },
             "properties": {
                 "name": "Spider-Woman",
-                "marvel-api-id": "",
-                "description": "Place of birth: London, England. Jessica Drew",
+                "marvel_api_id": "",
+                "place_of_birth": "London, England",
+                "real_name": "Jessica Drew",
                 "image": ""
             }
         },
@@ -866,8 +916,9 @@
             },
             "properties": {
                 "name": "Storm",
-                "marvel-api-id": "",
-                "description": "Place of birth: New York, USA. Ororo Munroe",
+                "marvel_api_id": "",
+                "place_of_birth": "New York, USA",
+                "real_name": "Ororo Munroe",
                 "image": ""
             }
         },
@@ -883,8 +934,9 @@
             },
             "properties": {
                 "name": "Thing",
-                "marvel-api-id": "",
-                "description": "Places of birth: Manhattan, USA. Benjamin Jacob Grimm",
+                "marvel_api_id": "",
+                "place_of_birth": "Manhattan, USA",
+                "real_name": "Benjamin Jacob Grimm",
                 "image": ""
             }
         },
@@ -900,8 +952,9 @@
             },
             "properties": {
                 "name": "Venom",
-                "marvel-api-id": "",
-                "description": "Place of birth: San-Francisco, USA. Edward Brock",
+                "marvel_api_id": "",
+                "place_of_birth": "San-Francisco, USA",
+                "real_name": "Edward Brock",
                 "image": ""
             }
         },
@@ -917,8 +970,9 @@
             },
             "properties": {
                 "name": "Vulture ",
-                "marvel-api-id": "",
-                "description": "Place of birth: Staten Island, USA. Adrian Toomes",
+                "marvel_api_id": "",
+                "place_of_birth": "Staten Island, USA",
+                "real_name": "Adrian Toomes",
                 "image": ""
             }
         },
@@ -935,8 +989,9 @@
             "properties": {
                 "marker-symbol": "circle",
                 "name": "Wolverine",
-                "marvel-api-id": "",
-                "description": "Place of birth: Alberta, Canada.James Howlett \"Logan\"",
+                "marvel_api_id": "",
+                "place_of_birth": "Alberta, Canada",
+                "real_name": "James Howlett \"Logan\"",
                 "image": ""
             }
         }
