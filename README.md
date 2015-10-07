@@ -21,6 +21,13 @@ Please request to add characters one pull or issue at a time so I can keep track
 
 For corrections please submit an issue and the correction.
 
+This repo map doesn't spiderfy and with so many characters from "New York" this is needed.
+
+Characters were mostly grabbed from this repo: https://github.com/asamiller/marvelousdb/tree/master/data/characters
+
+There are also characters with no location. These are currently in the middle of the ocean a 0,0.
+
+
 Icons from https://www.mapbox.com/maki/
 
 Marvel Developers http://developer.marvel.com/
