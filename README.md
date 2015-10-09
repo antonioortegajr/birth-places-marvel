@@ -4,9 +4,7 @@ Data from the official Marvel wiki.
 
 Originally done in a google map I did (https://www.google.com/maps/d/edit?mid=zHVaAFkpSLUE.k19G-8uP-mdI&hl=en&gl=us&ptab=2&ie=UTF8&oe=UTF8&msa=0&z=2) and ported over to geojson via http://mapbox.github.io/togeojson/
 
-Characters are from the 616 universe.
-
-Those with out a city I could find are indicated by a pin with a circle in it.
+Those with out a city I could find are indicated by a pin with a circle in it in this repo.
 
 #Purpose
 The reason for this map is to plot birthplaces of Marvel characters in way others could contribute to.
